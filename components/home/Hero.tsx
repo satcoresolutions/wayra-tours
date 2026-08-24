@@ -11,71 +11,44 @@ type Props = {
   onClearTour: () => void;
 };
 
+const HERO_INICIAL = "/images/hero/sierra-nevada.jpeg";
+
 export default function Hero({
   tour,
   onExplore,
   onReserve,
   onClearTour,
 }: Props) {
+  const imagen = tour?.imagen ?? HERO_INICIAL;
+  const alt = tour?.nombre ?? "Sierra Nevada de Santa Marta";
+
   return (
     <section className="relative min-h-[680px] overflow-hidden px-6 py-20 sm:px-10 lg:px-20">
 
-      {/* ================================
+      {/* =================================
           IMAGEN DEL HERO
       ================================= */}
 
-      {tour?.imagen ? (
-        <div className="absolute inset-0">
-          <img
-            src={tour.imagen}
-            alt={tour.nombre}
-            className="h-full w-full object-cover"
-          />
+      <div className="absolute inset-0">
 
-          {/* Oscurecer imagen */}
-          <div className="absolute inset-0 bg-noche/70" />
+        <img
+          src={imagen}
+          alt={alt}
+          className="h-full w-full object-cover"
+        />
 
-          {/* Degradado inferior */}
-          <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/40 to-transparent" />
-        </div>
-      ) : (
-        /* ================================
-           HERO INICIAL
-        ================================= */
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-        >
-          <svg
-            viewBox="0 0 1200 700"
-            preserveAspectRatio="none"
-            className="h-full w-full"
-          >
-            <polygon
-              points="0,700 180,350 320,500 500,180 680,450 850,250 1050,420 1200,180 1200,700"
-              fill="#16352E"
-            />
+        {/* Oscurecimiento general */}
+        <div className="absolute inset-0 bg-noche/55" />
 
-            <polygon
-              points="250,700 450,400 600,550 780,300 950,500 1200,350 1200,700"
-              fill="#2F6E5E"
-              opacity="0.6"
-            />
+        {/* Degradado inferior */}
+        <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/35 to-transparent" />
 
-            <circle
-              cx="950"
-              cy="120"
-              r="55"
-              fill="#E3C77E"
-              opacity="0.85"
-            />
-          </svg>
+        {/* Degradado lateral para mejorar lectura */}
+        <div className="absolute inset-0 bg-gradient-to-r from-noche/70 via-noche/20 to-transparent" />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-noche via-noche/30 to-transparent" />
-        </div>
-      )}
+      </div>
 
-      {/* ================================
+      {/* =================================
           CONTENIDO
       ================================= */}
 
@@ -93,15 +66,27 @@ export default function Hero({
 
       </div>
 
-      {/* ================================
-          VOLVER A HERO PRINCIPAL
+      {/* =================================
+          VOLVER AL HERO PRINCIPAL
       ================================= */}
 
       {tour && (
         <button
           type="button"
           onClick={onClearTour}
-          className="absolute right-6 top-6 z-20 rounded-full border border-musgo/60 bg-noche/70 px-4 py-2 font-mono text-xs text-arena backdrop-blur-sm transition hover:border-oro hover:text-oro"
+          className="
+            absolute right-6 top-6 z-20
+            rounded-full
+            border border-musgo/60
+            bg-noche/70
+            px-4 py-2
+            font-mono text-xs
+            text-arena
+            backdrop-blur-sm
+            transition
+            hover:border-oro
+            hover:text-oro
+          "
         >
           ← Ver todas las rutas
         </button>
