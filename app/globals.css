@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b1f1c;
+  color: #f1e8d6;
+}
+
+::selection {
+  background-color: #c89b3c;
+  color: #0b1f1c;
+}
+
+/* Foco visible para accesibilidad de teclado */
+:focus-visible {
+  outline: 2px solid #e3c77e;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
