@@ -1,34 +1,70 @@
-# Dependencies
+# ============================================================
+# SATCORE SOLUTIONS
+# Git Ignore
+# ============================================================
+
+# --- Dependencies ---
 node_modules/
 
-# Next.js
+# --- Next.js ---
 .next/
 out/
-
-# Production
 build/
+
+# --- Production ---
 dist/
 
-# Environment variables
+# --- Environment variables and secrets ---
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 
-# Logs
+# --- Logs ---
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 
-# OS
+# --- Package manager / tooling caches ---
+.npm/
+.pnpm-store/
+.yarn/cache/
+.turbo/
+
+# --- Tests and coverage ---
+coverage/
+.nyc_output/
+
+# --- TypeScript ---
+*.tsbuildinfo
+next-env.d.ts
+
+# --- Deployment ---
+.vercel/
+.netlify/
+
+# --- Operating systems ---
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# IDE
-.vscode/
+# --- Editors and IDEs ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea/
+*.swp
+*.swo
 
-# TypeScript
-*.tsbuildinfo
+# --- Local certificates and private keys ---
+*.pem
+*.key
+*.p12
+*.pfx
+
+# --- Temporary files ---
+tmp/
+temp/
+*.tmp
+*.bak
